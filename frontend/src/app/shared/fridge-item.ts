@@ -1,6 +1,6 @@
 export interface FridgeItem {
     _id: string;
     name: string;
-    quantity: number,
+    quantity: number;
     date: Date
 }

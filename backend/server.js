@@ -1,8 +1,8 @@
 const cors = require('cors');
 const express = require('express');
-const routes = require('./routes');
-const mongoose = require('mongoose');
-require('dotenv').config();
+const db = require('./db');
+const routesFridgeItems = require('./routes/fridgeItems');
+const routesUsers = require('./routes/users');
 
 const app = express();
 const PORT = 3000;
@@ -10,15 +10,9 @@ const PORT = 3000;
 app.use(express.json());
 // enable cors for all requests
 app.use(cors());
-app.use('/', routes);
 
-// connect to mongoDB
-mongoose.connect(process.env.DB_CONNECTION, { useNewUrlParser: true, useUnifiedTopology: true });
-const db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', () => {
-    console.log('connected to DB');
-});
+app.use('/fridgeItems', routesFridgeItems);
+app.use('/users', routesUsers);
 
 app.listen(PORT, (error) => {
     if (error) {

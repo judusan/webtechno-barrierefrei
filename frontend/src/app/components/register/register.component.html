@@ -1,0 +1,54 @@
+<div class="outer">
+    <div class="container">
+        <div class="row">
+            <div class="offset-md-2 col-lg-5 col-md-7 offset-lg-4 offset-md-3">
+                <div class="panel border bg-white">
+                <div class="panel-heading">
+                    <h3 class="pt-3 font-weight-bold">Register</h3>
+                </div>
+                <div class="panel-body p-3">
+                    <form [formGroup]="registerForm">
+                        <div class="form-group pt-3">
+                            <div class="input-field" [class.error]="registerForm.controls['forename'].dirty && registerForm.hasError('required', 'forename')">
+                               <span class="bi bi-person-fill"></span>
+                                <input formControlName="forename" type="text" placeholder="Forename">
+                            </div>
+                        </div>
+                        <small *ngIf="registerForm.controls['forename'].dirty && registerForm.hasError('required', 'forename')" class="text-danger">*Forename is required</small>
+                        <div class="form-group pt-3">
+                            <div class="input-field" [class.error]="registerForm.controls['surname'].dirty && registerForm.hasError('required', 'surname')">
+                               <span class="bi bi-person-fill"></span>
+                                <input formControlName="surname" type="text" placeholder="Surname">
+                            </div>
+                        </div>
+                        <small *ngIf="registerForm.controls['surname'].dirty && registerForm.hasError('required', 'surname')" class="text-danger">*Surname is required</small>
+                        <div class="form-group pt-3">
+                            <div class="input-field" [class.error]="registerForm.controls['email'].dirty && registerForm.hasError('required', 'email')">
+                               <span class="bi bi-person-fill"></span>
+                                <input formControlName="email" type="text" placeholder="Email">
+                            </div>
+                        </div>
+                        <small *ngIf="registerForm.controls['email'].dirty && registerForm.hasError('required', 'email')" class="text-danger">*Email is required</small>
+                        <div class="form-group pt-3">
+                            <div class="input-field" [class.error]="registerForm.controls['username'].dirty && registerForm.hasError('required', 'username')">
+                               <span class="bi bi-person-fill"></span>
+                                <input formControlName="username" type="text" placeholder="Username">
+                            </div>
+                        </div>
+                        <small *ngIf="registerForm.controls['username'].dirty && registerForm.hasError('required', 'username')" class="text-danger">*Username is required</small>
+                        <div class="form-group pt-3">
+                            <div class="input-field" [class.error]="registerForm.controls['password'].dirty && registerForm.hasError('required', 'password')">
+                                <span class="bi bi-lock-fill"></span>
+                                <input formControlName="password" [type]="type" placeholder="Password">
+                                <span (click)="hideShowPass()" class="bi {{eyeIcon}}"></span>
+                            </div>
+                        </div>
+                        <small *ngIf="registerForm.controls['password'].dirty && registerForm.hasError('required', 'password')" class="text-danger">*Password is required</small>
+                        <button type="submit" class="btn btn-primary btn-block mt-4 w-100" (click)="onRegister()">Register</button>
+                        <div class="text-center pt-4 text-muted">Already have account? <a id="forget" routerLink="/login">Login</a></div>
+                    </form>
+                </div>
+            </div>
+        </div></div>
+    </div>
+</div>
