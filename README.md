@@ -28,8 +28,31 @@ Um sicherzustellen, dass Ihre Umgebung ordnungsgemäß eingerichtet ist, install
 Nachdem Sie Angular CLI und Node.js erfolgreich installiert haben, können Sie mit der Einrichtung der Entwicklungsumgebung fortfahren.
 
 3. Klonen Sie das Repository und richten Sie es ein:
+    ```
+   git clone https://github.com/judusan/webtechno.git
+     ```
+4. Installieren Sie die Abhängigkeiten aus dem Frontend-, sowie Backend Ordner:
+    ```
+   cd backend
+    npm install
+     ```
+     ```
+   cd frontend
+    npm install
+     ```
 
+5. Starten Sie Front- und Backend:
+    ```
+   cd backend
+    npm run watch
 
+    
+     ```
+     ```
+   cd frontend
+    ng serve
+     ```
+6. Öffnen Sie Ihren bevorzugten Browser und besuchen Sie die Adresse http://localhost:4200
 ## Verwendung
 Um die "What's In My Fridge" App zu verwenden, müssen Sie sich zuerst registrieren:
 ### Login und Registrieren
