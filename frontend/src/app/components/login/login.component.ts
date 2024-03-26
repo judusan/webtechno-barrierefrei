@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import { BackendService } from '../../shared/backend.service';
-import { RouteReuseStrategy, Router } from '@angular/router';
+import { Router } from '@angular/router';
+import { AuthService } from '../../shared/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,7 @@ export class LoginComponent implements OnInit {
   eyeIcon: string = "bi-eye-slash";
   loginForm!: FormGroup;
 
-  constructor(private fb: FormBuilder, private bs: BackendService, private router: Router) { }
+  constructor(private fb: FormBuilder, private bs: BackendService, private router: Router, private auth: AuthService) { }
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({
@@ -41,6 +42,7 @@ export class LoginComponent implements OnInit {
       this.bs.loginUser(username, password).subscribe(
           response => {
             console.log('response',response);
+            this.auth.login(response);
             this.loginForm.reset();
             this.router.navigate(['table'])
           },
@@ -48,6 +50,7 @@ export class LoginComponent implements OnInit {
             console.log('error', error);
             console.log('error status', error.status);
             console.log('error error message', error.error.error);
+            this.auth.logout();
           })
     } else {
       this.validateAllFormFields(this.loginForm);

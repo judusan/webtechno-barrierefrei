@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { BackendService } from '../../shared/backend.service';
+import { Router } from '@angular/router';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { ExistDialogComponent } from './exist-dialog/exist-dialog.component';
 
 
 
@@ -16,7 +19,7 @@ export class RegisterComponent implements OnInit {
   eyeIcon: string = "bi-eye-slash"
   registerForm!: FormGroup;
 
-  constructor(private fb: FormBuilder, private bs : BackendService) { }
+  constructor(private fb: FormBuilder, private bs : BackendService, private router: Router, private dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.registerForm = this.fb.group({
@@ -42,6 +45,7 @@ export class RegisterComponent implements OnInit {
       response => {
         console.log('response',response);
         this.registerForm.reset();
+        this.router.navigate(['login']);
       },
       error => {
         console.log('error', error);
@@ -52,6 +56,33 @@ export class RegisterComponent implements OnInit {
     } else {
       this.validateAllFormFields(this.registerForm)
     }
+  }
+
+  openDialog() {
+
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+
+    this.dialog.open(ExistDialogComponent, dialogConfig);
+}
+
+  checkIfUsernameExists(evt: any): void {
+    let username = this.registerForm.get('username')?.value;
+    console.log('event-target', evt);
+    console.log(username);
+    this.bs.checkIfUsernameExist(username).subscribe(
+      response => {
+        console.log(response);
+        if(response) {
+          this.openDialog();
+      }
+    },
+      error => {
+        console.log(error);
+      }
+    );
   }
 
   private validateAllFormFields(formGroup: FormGroup) {

@@ -1,17 +1,17 @@
 const express = require('express');
 const router = express.Router();
 const FridgeItem = require('../models/fridgeItems');
-const fridgeItems = require('../models/fridgeItems');
+
 
 // get all items
-router.get('/fridgeItems', async(req, res) => {
+router.get('/', async(req, res) => {
     const allFridgeItems = await FridgeItem.find();
     console.log(allFridgeItems);
     res.send(allFridgeItems);
 });
 
 // post one item
-router.post('/fridgeItems', async(req, res) => {
+router.post('/', async(req, res) => {
     const newFridgeItem = new FridgeItem({
         name: req.body.name,
         quantity: req.body.quantity,
@@ -22,7 +22,7 @@ router.post('/fridgeItems', async(req, res) => {
 });
 
 // post one item via id
-router.get('/fridgeItems/:id', async(req, res) => {
+router.get('/:id', async(req, res) => {
     try {
         const fridgeItem = await FridgeItem.findOne({ _id: req.params.id });
         console.log(req.params);
@@ -36,7 +36,7 @@ router.get('/fridgeItems/:id', async(req, res) => {
 })
 
 // update one item
-router.patch('/fridgeItems/:id', async(req, res) => {
+router.patch('/:id', async(req, res) => {
     try {
         const fridgeItem = await FridgeItem.findOne({ _id: req.params.id })
 
@@ -60,10 +60,10 @@ router.patch('/fridgeItems/:id', async(req, res) => {
     }
 });
 
-// delete one member via id
-router.delete('/fridgeItems/:id', async(req, res) => {
+// delete one item via id
+router.delete('/:id', async(req, res) => {
     try {
-        await fridgeItems.deleteOne({ _id: req.params.id })
+        await FridgeItem.deleteOne({ _id: req.params.id })
         res.status(204).send()
     } catch {
         res.status(404)

@@ -18,14 +18,11 @@
                         <div class="form-group pt-3">
                             <div class="input-field" [class.error]="loginForm.controls['password'].dirty && loginForm.hasError('required','password')">
                                 <span class="bi bi-lock-fill"></span>
-                                <input formControlName="password" type="text" placeholder="Password">
+                                <input formControlName="password" [type]="type" placeholder="Password">
                                 <span (click)="hideShowPass()" class="bi {{eyeIcon}}"></span>
                             </div>
                         </div>
                         <small *ngIf="loginForm.controls['password'].dirty && loginForm.hasError('required','password')"class="text-danger">*Password is required</small>
-                        <div class="form-inline fr mt-4">
-                            <a id="forget" class="font-weight-bold">Forgot Password?</a>
-                        </div>
                         <button (click)="onLogin()" type="submit" class="btn btn-primary btn-block mt-4 w-100">Login</button>
                         <div class="text-center pt-4 text-muted">Don't have account? <a id="forget" routerLink="/register">Sign up!</a></div>
                     </form>
