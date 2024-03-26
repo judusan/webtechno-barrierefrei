@@ -16,7 +16,9 @@ fieldset.container legend {
 
 button.btn {
     margin-top: 20px;
+    margin-right: 20px;
     border-radius: 15px;
+    background-color: #008000;
 }
 
 
@@ -26,7 +28,9 @@ button.btn-primary {
 }
 
 
-input[type='text'],
+input[type='text'] {
+    color: #008000;
+}
 input[type='date'] {
     border: 1px solid #ddd;
     border-radius: 5px;
