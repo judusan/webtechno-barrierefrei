@@ -1,4 +1,4 @@
-# What's In My Fridge App - Use it or lose it!
+# What's In My Fridge? App - Use it or lose it!
 ![image](https://github.com/judusan/webtechno/assets/115874012/a3bde87f-88fd-43fc-b11b-b963fa5ce93d)
 
 1. [Beschreibung](#beschreibung)
@@ -10,10 +10,24 @@
     - [Daten aktualisieren](#daten-aktualisieren)
 
 ## Beschreibung
-Die "What's In My Fridge" App ist eine Webanwendung, die dir dabei hilft, deine Lebensmittel zu verwalten. Mit dieser App kannst du deine Lebensmittel erfassen, einschließlich ihres Ablaufdatums und der Menge. Sie ermöglicht es dir auch, die Artikel zu bearbeiten oder zu löschen, wenn sie verbraucht sind.
+Die "What's In My Fridge?" App ist eine Webanwendung, die dir dabei hilft, deine Lebensmittel zu verwalten. Mit dieser App kannst du deine Lebensmittel erfassen, einschließlich ihres Ablaufdatums und der Menge. Sie ermöglicht es dir auch, die Artikel zu bearbeiten oder zu löschen, wenn sie verbraucht sind.
 
 Die App wurde entwickelt, um die Organisation deines Kühlschranks zu erleichtern und sicherzustellen, dass du immer im Blick hast, welche Lebensmittel du noch hast und wann sie verfallen.
+
 ## Installation
+Um sicherzustellen, dass Ihre Umgebung ordnungsgemäß eingerichtet ist, installieren Sie Angular CLI und Node.js.
+
+1. **Angular CLI installieren:** Angular CLI wird für die Entwicklung von Angular-Anwendungen benötigt. Führen Sie den folgenden Befehl aus, um Angular CLI global zu installieren:
+
+    ```
+    npm install -g @angular/cli
+    ```
+
+2. **Node.js installieren:** Node.js ist eine Laufzeitumgebung für JavaScript, die für die Ausführung von Angular-Anwendungen erforderlich ist. Laden Sie Node.js von [nodejs.org](https://nodejs.org) herunter und führen Sie die Installation durch.
+
+Nachdem Sie Angular CLI und Node.js erfolgreich installiert haben, können Sie mit der Einrichtung der Entwicklungsumgebung fortfahren.
+
+3. Klonen Sie das Repository und richten Sie es ein:
 
 
 ## Verwendung
@@ -33,15 +47,26 @@ Nach erfolgreicher Registrierung können Sie sich im Login-Bereich anmelden.
 ![image](https://github.com/judusan/webtechno/assets/115874012/c4e8b18d-2c9d-4170-8824-834cad5502f0)
 
 ### Daten erstellen
+Um Artikel zu Ihrem virtuellen Kühlschrank hinzufügen zu können, nutzen Sie bitte:
 
-## Running unit tests
+![image](https://github.com/judusan/webtechno/assets/115874012/d2aaf5ac-8e72-44c6-8197-bf02ecc14e44)
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+es erscheint folgendes Formular:
 
-## Running end-to-end tests
+![image](https://github.com/judusan/webtechno/assets/115874012/a52a4c7f-1c02-42e5-8ae1-c501d7dad7d7)
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+### Daten löschen
+Um verbrauchte oder fehlerhafte Artikel aus Ihrem virtuellen Kühlschrank zu löschen, nutzen Sie bitte:
 
-## Further help
+![image](https://github.com/judusan/webtechno/assets/115874012/8eba2abb-67f6-4600-9a42-f621a4f4c2db)
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+### Daten aktualisieren
+Hast du versehentlich eine falsche Angabe gemacht? Kein Problem! :) Du kannst deine Einträge verändern:
+
+![image](https://github.com/judusan/webtechno/assets/115874012/34646040-829e-4731-9bcb-6d12dcac2b13)
+
+![image](https://github.com/judusan/webtechno/assets/115874012/8133566a-9bec-4569-ab11-d928bf3d9c7f)
+
+
+
+
