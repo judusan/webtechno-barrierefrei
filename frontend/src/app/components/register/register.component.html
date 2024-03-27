@@ -32,7 +32,7 @@
                         <div class="form-group pt-3">
                             <div class="input-field" [class.error]="registerForm.controls['username'].dirty && registerForm.hasError('required', 'username')">
                                <span class="bi bi-person-fill"></span>
-                                <input formControlName="username" type="text" placeholder="Username">
+                                <input formControlName="username" (change)="checkIfUsernameExists($event.target)" type="text" placeholder="Username">
                             </div>
                         </div>
                         <small *ngIf="registerForm.controls['username'].dirty && registerForm.hasError('required', 'username')" class="text-danger">*Username is required</small>

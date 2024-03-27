@@ -1,3 +1,15 @@
 main {
-    background-color: grey;
+    background: linear-gradient(to top, #3caf31 50%, #63c24b 90%)no-repeat;
+
+}
+
+.container {
+    font-size: 36px;
+    color: #008000;
+    text-align: center;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 2s ease-in-out;
 }

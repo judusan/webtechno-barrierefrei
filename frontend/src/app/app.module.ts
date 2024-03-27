@@ -14,6 +14,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { ExistDialogComponent } from './components/register/exist-dialog/exist-dialog.component';
+
 
 @NgModule({
   declarations: [
@@ -24,14 +27,16 @@ import { RegisterComponent } from './components/register/register.component';
     HomeComponent,
     TableComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    ExistDialogComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatDialogModule
   ],
   providers: [
     provideAnimationsAsync()

@@ -19,8 +19,8 @@ export class BackendService {
     return this.http.post<User>(this.userRoute, user);
   }
 
-  checkIfExist(email: string): Observable<User>{
-    return this.http.get<User>(this.userRoute + '/' + email);
+  checkIfUsernameExist(username: string): Observable<User>{
+    return this.http.get<User>(this.userRoute + '/' + username);
   }
 
   loginUser(username: string, password: string): Observable<any>{

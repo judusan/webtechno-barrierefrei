@@ -1,16 +1,10 @@
-<div class="container mt-3">
-    
-
-
-    <h3 class="m-3">All Entries</h3>
-
-   
+<div *ngIf="!deleted" class=" container mt-3 ">
+    <h3 class="m-3">My Fridge Items</h3>
     <div class="text-end">
-        <a routerLink="/fridgeItem"><i class="bi bi-plus-circle fs-4"></i> add</a>
+        <a routerLink="/fridgeItem"><i class="bi bi-plus-circle fs-4"></i> add item</a>
     </div>
     <div class="table-responsive">
         <table class="m-3 table table-striped table-hover">
-            <caption>Alle <code>items</code></caption>
             <thead>
                 <tr>
                     <th scope="col ">Nr</th>
@@ -27,12 +21,14 @@
                     <td>
                         {{ fridgeItem.date | date: 'dd.MM.yyyy' }}
                         <a [routerLink]="['/fridgeItem', fridgeItem._id]"> <span class=" bi bi-pencil-square px-5 "></span></a>
-                        <span (click)="delete(fridgeItem._id)" class=" bi bi-trash px-5 "></span>
-
+                        <span (click)="delete(fridgeItem._id)" style="cursor: pointer;" class=" bi bi-trash px-5 "></span>
                     </td>
                 </tr>
             </tbody>
-
         </table>
     </div>
 </div>
+<div *ngIf="deleted" class=" container mt-3 ">
+    <h3>Data has been deleted!</h3>
+    <button type="button" class="btn btn-secondary" (click)="reload(false)">Back</button>
+</div>    
