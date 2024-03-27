@@ -20,13 +20,13 @@ Die "What's in my fridge?" App ist eine Webanwendung, die dich dabei unterstütz
 
 2. **Node.js installieren:** Laden Sie Node.js von [nodejs.org](https://nodejs.org) herunter und führen Sie die Installation durch.
 
-3. **Frontend-Repository klonen und einrichten:** Klonen Sie das Repository von GitHub, indem Sie den folgenden Befehl ausführen:
+3. **Repository klonen und einrichten:** Klonen Sie das Repository von GitHub, indem Sie den folgenden Befehl ausführen:
     ```
-   git clone https://github.com/judusan/app-frontend.git
+   git clone https://github.com/judusan/webtechno.git
      ```
     Wechseln Sie dann in den Ordner /frontend des geklonten Repositories:
      ```
-     cd app-frontend/frontend
+     cd webtechno/frontend
      ```
      Installieren Sie die Abhängigkeiten:
      ```
@@ -36,13 +36,9 @@ Die "What's in my fridge?" App ist eine Webanwendung, die dich dabei unterstütz
      ```
      ng serve
      ```
-4. **Backend-Repository klonen und einrichten:** Klonen Sie das Repository von GitHub, indem Sie den folgenden Befehl ausführen:
-    ```
-   git clone https://github.com/judusan/app-backend.git
-     ```
     Wechseln Sie dann in den Ordner /backend des geklonten Repositories:
      ```
-     cd app-backend/backend
+     cd webtechno/backend
      ```
      Installieren Sie die Abhängigkeiten:
      ```
