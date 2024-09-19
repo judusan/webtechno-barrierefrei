@@ -1,34 +1,46 @@
-<div *ngIf="!deleted" class=" container mt-3 ">
-    <h3 class="m-3">My Fridge Items</h3>
+<div *ngIf="!deleted" class="container mt-3">
+    <main id="table-main">
+    <h1 class="m-3 text-center">My Fridge Items</h1>
     <div class="text-end">
-        <a routerLink="/fridgeItem"><i class="bi bi-plus-circle fs-4"></i> add item</a>
+        <a routerLink="/fridgeItem" id="add-item-section" role="button" tabindex="0" aria-label="add new fridge item"><i class="bi bi-plus-circle fs-4"></i> add item</a>
     </div>
     <div class="table-responsive">
-        <table class="m-3 table table-striped table-hover">
+        <table class="table table-striped table-hover">
             <thead>
                 <tr>
-                    <th scope="col ">Nr</th>
-                    <th scope="col ">Fridge Item</th>
-                    <th scope="col ">Quantity</th>
-                    <th scope="col ">Expiry Date</th>
+                    <th scope="col">Nr</th>
+                    <th scope="col">Fridge Item</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Expiry Date</th>
+                    <th scope="col">Edit</th>
+                    <th scope="col">Delete</th>
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let fridgeItem of fridgeItems; let i=index; ">
-                    <td>{{ i+1 }}</td>
+                <tr *ngFor="let fridgeItem of fridgeItems; let i = index;">
+                    <td>{{ i + 1 }}</td>
                     <td>{{ fridgeItem.name }}</td>
                     <td>{{ fridgeItem.quantity }}</td>
-                    <td>
-                        {{ fridgeItem.date | date: 'dd.MM.yyyy' }}
-                        <a [routerLink]="['/fridgeItem', fridgeItem._id]"> <span class=" bi bi-pencil-square px-5 "></span></a>
-                        <span (click)="delete(fridgeItem._id)" style="cursor: pointer;" class=" bi bi-trash px-5 "></span>
+                    <td>{{ fridgeItem.date | date: 'dd.MM.yyyy' }}</td>
+                    <td class="text-center">
+                        <a [routerLink]="['/fridgeItem', fridgeItem._id]" > 
+                            <span class="bi bi-pencil-square fs-5" role="button" [attr.aria-label]="'Edit item' + fridgeItem.name"></span>
+                        </a>
+                    </td>
+                    <td class="text-center">
+                        <span (click)="delete(fridgeItem._id)"
+                              (keydown.enter)="delete(fridgeItem._id)"
+                              (keydown.space)="delete(fridgeItem._id)"
+                              tabindex="0" 
+                              style="cursor: pointer;" 
+                              class="bi bi-trash fs-5" 
+                              role="button" 
+                              [attr.aria-label]="'Delete item ' + fridgeItem.name">
+                        </span>
                     </td>
                 </tr>
             </tbody>
         </table>
     </div>
+    </main>
 </div>
-<div *ngIf="deleted" class=" container mt-3 ">
-    <h3>Data has been deleted!</h3>
-    <button type="button" class="btn btn-secondary" (click)="reload(false)">Back</button>
-</div>    

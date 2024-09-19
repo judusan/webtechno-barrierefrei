@@ -3,31 +3,39 @@
         <div class="row">
             <div class="offset-md-2 col-lg-5 col-md-7 offset-lg-4 offset-md-3">
                 <div class="panel border bg-white">
-                <div class="panel-heading">
-                    <h3 class="pt-3 font-weight-bold">Login</h3>
-                </div>
-                <div class="panel-body p-3">
-                    <form [formGroup]="loginForm">
-                        <div class="form-group pt-3">
-                            <div class="input-field" [class.error]="loginForm.controls['username'].dirty && loginForm.hasError('required','username')">
-                               <span class="bi bi-person-fill"></span>
-                                <input formControlName="username" type="text" placeholder="Username">
-                            </div>
+                    <main id="login-main">
+                        <div class="panel-heading">
+                            <h1 class="pt-3 font-weight-bold">Login</h1>
                         </div>
-                        <small *ngIf="loginForm.controls['username'].dirty && loginForm.hasError('required','username')" class="text-danger">*Username is required</small>
-                        <div class="form-group pt-3">
-                            <div class="input-field" [class.error]="loginForm.controls['password'].dirty && loginForm.hasError('required','password')">
-                                <span class="bi bi-lock-fill"></span>
-                                <input formControlName="password" [type]="type" placeholder="Password">
-                                <span (click)="hideShowPass()" class="bi {{eyeIcon}}"></span>
+                        <div class="panel-body p-3">
+                            <form [formGroup]="loginForm" role="form" aria-label="Login Form">
+                            <!-- Username Field -->
+                            <div class="form-group pt-3">
+                                <label for="username" class="sr-only">Username</label>
+                                <div class="input-field" [class.error]="loginForm.controls['username'].dirty && loginForm.hasError('required','username')">
+                                    <span class="bi bi-person-circle" aria-hidden="true"></span>                                
+                                    <input id="username" formControlName="username" type="text" aria-required="true" aria-describedby="username-error">
+                                </div>
+                                <small id="username-error" *ngIf="loginForm.controls['username'].dirty && loginForm.hasError('required','username')" class="text-danger">*Username is required</small>
                             </div>
+                            <!-- Password Field -->
+                            <div class="form-group pt-3">
+                                <label for="password" class="sr-only">Password</label>
+                                <div class="input-field" [class.error]="loginForm.controls['password'].dirty && loginForm.hasError('required','password')">
+                                    <span class="bi bi-lock-fill" aria-hidden="true"></span>
+                                    <input id="password" formControlName="password" [type]="type" aria-required="true" id="password-error">
+                                    <span (click)="hideShowPass()" class="bi {{eyeIcon}}" tabindex="0" role="button" aria-label="Toggle password visibility"></span>
+                                </div>
+                                    <small id="password-error" *ngIf="loginForm.controls['password'].dirty && loginForm.hasError('required','password')"class="text-danger">*Password is required</small>
+                            </div>
+                            <!-- Buttons -->
+                                <button (click)="onLogin()" type="submit" class="btn btn-primary btn-block mt-4 w-100">Login</button>
+                                <div class="text-center pt-4 text-muted reg-log">Don't have an account? <a id="auth-link" routerLink="/register" aria-label="Sign up for a new account">Sign up!</a></div>
+                            </form>
                         </div>
-                        <small *ngIf="loginForm.controls['password'].dirty && loginForm.hasError('required','password')"class="text-danger">*Password is required</small>
-                        <button (click)="onLogin()" type="submit" class="btn btn-primary btn-block mt-4 w-100">Login</button>
-                        <div class="text-center pt-4 text-muted">Don't have account? <a id="forget" routerLink="/register">Sign up!</a></div>
-                    </form>
+                    </main>
                 </div>
             </div>
-        </div></div>
+        </div>
     </div>
 </div>

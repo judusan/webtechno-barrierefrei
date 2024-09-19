@@ -3,20 +3,24 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { BackendService } from '../../shared/backend.service';
 import { FridgeItem } from '../../shared/fridge-item';
+import { DialogService } from '../../shared/dialog.service';
 
 @Component({
   selector: 'app-create',
   templateUrl: './create.component.html',
-  styleUrls: ['./create.component.css']
+  styleUrl: '../styles/create-detail-styles.css'
 })
+
 export class CreateComponent implements OnInit {
   form: FormGroup;
 
   constructor(
     private bs: BackendService,
     private fb: FormBuilder,
-    private router: Router
-  ) {
+    private router: Router,
+    private dialogService: DialogService
+  )
+  {
     this.form = this.fb.group({
       nameControl: ['', Validators.required],
       quantityControl: ['', Validators.required],
@@ -24,34 +28,53 @@ export class CreateComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {
-    // Hier könntest du zusätzliche Initialisierungslogik hinzufügen, wenn nötig
-  }
+  ngOnInit(): void {}
 
   create(): void {
+    if (this.form.get('nameControl')?.value.trim() === '') {
+      this.dialogService.openErrorDialog('The name field is mandatory. Please provide a name for your item.');
+      return;
+    }
+
+    if (this.form.invalid) {
+      this.dialogService.openConfirmDialog('Missing Fields', 'Not all required fields are filled. Do you still want to create this entry?').subscribe(result => {
+        if (result) {
+          this.submitForm();
+        }
+      });
+    }
+    else {
+      this.submitForm();
+    }
+  }
+
+  submitForm(): void {
     const values = this.form.value;
     const newFridgeItem: FridgeItem = {
-        _id: '', // Du kannst das leere String hier lassen, wenn das Backend die ID generiert
-        name: values.nameControl,
-        quantity: values.quantityControl,
-        date: values.dateControl
+      _id: '',
+      name: values.nameControl,
+      quantity: values.quantityControl,
+      date: values.dateControl
     };
     this.bs.addOne(newFridgeItem).subscribe(
-        response => {
-            console.log('Eintrag erstellt:', response);
-            // Hier könntest du weitere Aktionen ausführen, z.B. eine Weiterleitung nach erfolgreicher Erstellung
-            this.router.navigateByUrl('/table');
-        },
-        error => {
-            console.log('Fehler beim Erstellen des Eintrags:', error);
-            // Hier könntest du eine Fehlerbehandlung hinzufügen, z.B. eine Fehlermeldung anzeigen
-        }
+      response => {
+        this.dialogService.openInfoDialog('Your entry has been successfully created.')
+        console.log('Entry created:', response);
+        this.router.navigateByUrl('/table');
+      },
+      error => {
+        console.log('Error creating this item:', error);
+      }
     );
-}
-
+  }
 
   cancel(): void {
-    // Hier könntest du eine Abbruchlogik hinzufügen, z.B. eine Weiterleitung oder eine Benachrichtigung
-    this.router.navigateByUrl('/table');
+    this.dialogService.openConfirmDialog('Confirm cancellation', 'Do you really want to cancel this action?').subscribe(
+      result => {
+        if (result) {
+          this.router.navigateByUrl('/table');
+        }
+      }
+    );
   }
 }

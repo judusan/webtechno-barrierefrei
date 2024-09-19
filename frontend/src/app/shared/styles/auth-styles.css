@@ -1,0 +1,70 @@
+/* Styles for Login and Register */
+
+.outer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 8em;
+}
+
+.panel {
+    min-height: 24em;
+    box-shadow: 0.625em 0.625em 5em rgb(218, 218, 218);
+    border-radius: 0.75em;
+    margin-top: 10em; 
+    background-color: #fcefbc !important;
+    border: 0.1875em solid #000 !important;
+}
+
+.panel-heading {
+    text-align: center !important; 
+    margin-bottom: 1em !important;
+    color: #000000;
+}
+
+.btn-primary {
+    border-radius: 2em;
+    background-color: #000000;
+    color: white;
+    min-width: 3em;
+    min-height: 3em;
+    border-color: #000000;
+}
+  
+a:hover {
+    text-decoration: none;
+}
+
+#auth-link{
+    margin-left: auto;
+    cursor:pointer;
+    color: #000500;
+}
+
+.input-field {
+    border-radius: 0.8em;
+    padding: 0.3em;
+    display: flex;
+    align-items: center;
+    border: 0.2em solid;
+    color: #000000;
+    min-width: 3em; 
+    min-height: 3em;
+    background-color: white;
+}
+
+.input-field.error {
+    border: 0.3em solid #8e1f1f;
+    color: #8e1f1f;
+}
+
+input[type='text'], input[type='password'] {
+    border: none;
+    outline: none;
+    box-shadow: none;
+    width: 100%;
+}
+
+.reg-log {
+    color: #000500 !important;
+}

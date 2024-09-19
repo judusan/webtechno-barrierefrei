@@ -15,8 +15,10 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { MatDialogModule } from '@angular/material/dialog';
-import { ExistDialogComponent } from './components/register/exist-dialog/exist-dialog.component';
-
+import { ConfirmDialogComponent } from './shared/confirm-dialog/confirm-dialog.component';
+import { ErrorDialogComponent } from './shared/error-dialog/error-dialog.component';
+import { InfoDialogComponent } from './shared/info-dialog/info-dialog.component';
+import { DialogService } from './shared/dialog.service';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { ExistDialogComponent } from './components/register/exist-dialog/exist-d
     TableComponent,
     LoginComponent,
     RegisterComponent,
-    ExistDialogComponent
+    ConfirmDialogComponent,
+    ErrorDialogComponent,
+    InfoDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -39,7 +43,8 @@ import { ExistDialogComponent } from './components/register/exist-dialog/exist-d
     MatDialogModule
   ],
   providers: [
-    provideAnimationsAsync()
+    provideAnimationsAsync(),
+    DialogService
   ],
   bootstrap: [AppComponent]
 })

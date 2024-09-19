@@ -1,26 +1,28 @@
 <main class="d-flex min-vh-100">
     <fieldset class="container  mt-5">
-        <legend *ngIf="fridgeItem" class="mb-4">Change entry of {{ fridgeItem.name }}
-        </legend>
-        <legend *ngIf="!fridgeItem" class="mb-4">Update entry</legend>
+        <legend *ngIf="fridgeItem" class="mb-4">Change entry of {{ fridgeItem.name }}</legend>
         <form [formGroup]="form" (ngSubmit)="update()">
+            <!-- Name Field -->
             <div class="form-group row">
                 <label class="col-2 col-form-label" for="name">Name</label>
-                <input type="text" class="col-10 form-control" id="name" placeholder="Name" formControlName="nameControl">
+                <input type="text" class="col-10 form-control" id="name" formControlName="nameControl" aria-required="true" aria-describedby="name-error">
+                <small id="name-error" *ngIf="form.get('nameControl')?.touched && form.get('nameControl')?.hasError('required')" class="text-danger">*Name is required</small>
             </div>
+             <!-- Quantity Field -->
             <div class="form-group row">
                 <label class="col-2 col-form-label" for="quantity">Quantity</label>
-                <input type="text" class="col-10 form-control" id="quantity" placeholder="Quantity" formControlName="quantityControl">
+                <input type="text" class="col-10 form-control" id="quantity" formControlName="quantityControl">
             </div>
+            <!-- Date Field -->
             <div class="form-group row">
                 <label class="col-2 col-form-label" for="date">Date</label>
-                <input type="date" class="col-10 form-control" id="date" placeholder="Date" formControlName="dateControl">
-
+                <input type="date" class="col-10 form-control" id="date" formControlName="dateControl">
             </div>
+            <!-- Buttons -->
             <div class="form-group row  justify-content-end">
-                <button type="submit" class="col-4 btn btn-secondary">Update</button>
+                <button type="submit" class="col-4 btn btn-secondary" aria-label="Update entry">Update</button>
                 <div class="col-2"></div>
-                <button type="button" class="col-4 btn btn-secondary" (click)="cancel() ">Cancel</button>
+                <button type="button" class="col-4 btn btn-secondary" aria-label="Cancel update entry" (click)="cancel() ">Cancel</button>
             </div>
         </form>
     </fieldset>

@@ -2,24 +2,28 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { BackendService } from '../../shared/backend.service';
 import { Router } from '@angular/router';
-import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { ExistDialogComponent } from './exist-dialog/exist-dialog.component';
+import { DialogService } from '../../shared/dialog.service';
 
-
+export interface DialogData {
+  headline: string;
+  info: string;
+}
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrl: './register.component.css'
+  styleUrls: ['./register.component.css',
+     '../styles/auth-styles.css'
+  ]
 })
-export class RegisterComponent implements OnInit {
 
+export class RegisterComponent implements OnInit {
   type: string = "password";
   isText: boolean = false;
   eyeIcon: string = "bi-eye-slash"
   registerForm!: FormGroup;
 
-  constructor(private fb: FormBuilder, private bs : BackendService, private router: Router, private dialog: MatDialog) { }
+  constructor(private fb: FormBuilder, private bs : BackendService, private router: Router, private dialogService: DialogService) { }
 
   ngOnInit(): void {
     this.registerForm = this.fb.group({
@@ -28,9 +32,7 @@ export class RegisterComponent implements OnInit {
       email: ['', Validators.required],
       username: ['', Validators.required],
       password: ['', Validators.required]
-
     })
-    
   }
 
   hideShowPass() {
@@ -40,33 +42,41 @@ export class RegisterComponent implements OnInit {
   }
 
   onRegister() {
-    if(this.registerForm.valid) {
-      this.bs.registerNewUser(this.registerForm.value).subscribe(
+    if (this.registerForm.valid) {
+      const username = this.registerForm.get('username')?.value;
+      
+      this.bs.checkIfUsernameExist(username).subscribe(
       response => {
-        console.log('response',response);
-        this.registerForm.reset();
-        this.router.navigate(['login']);
+        if (response) {
+          this.dialogService.openErrorDialog("Username already exists. Please choose a different one.");
+        }
+        else
+        {
+          this.bs.registerNewUser(this.registerForm.value).subscribe(
+          response => {
+            console.log('response', response);
+            this.registerForm.reset();
+            this.dialogService.openInfoDialog("User " + response.username + " registered successfully!");
+            this.router.navigate(['login']);
+          },
+          error => {
+            console.log('error', error);
+            this.dialogService.openErrorDialog("Username already exists. Please choose a different one.");
+            console.log('error status', error.status);
+            console.log('error error message', error.error.error);
+          });
+        }
       },
       error => {
-        console.log('error', error);
-        console.log('error status', error.status);
-        console.log('error error message', error.error.error);
-      })
-      console.log(this.registerForm.value)
-    } else {
-      this.validateAllFormFields(this.registerForm)
+        console.log(error);
+      });
+    } 
+    else {
+      console.log('Form is invalid');
+      this.dialogService.openErrorDialog("Some required fields are missing. Please ensure all fields are completed.");
+      this.validateAllFormFields(this.registerForm);
     }
   }
-
-  openDialog() {
-
-    const dialogConfig = new MatDialogConfig();
-
-    dialogConfig.disableClose = true;
-    dialogConfig.autoFocus = true;
-
-    this.dialog.open(ExistDialogComponent, dialogConfig);
-}
 
   checkIfUsernameExists(evt: any): void {
     let username = this.registerForm.get('username')?.value;
@@ -76,8 +86,8 @@ export class RegisterComponent implements OnInit {
       response => {
         console.log(response);
         if(response) {
-          this.openDialog();
-      }
+          this.dialogService.openErrorDialog("Username already exists. Please choose a different one.");
+        }
     },
       error => {
         console.log(error);
@@ -94,8 +104,6 @@ export class RegisterComponent implements OnInit {
       } else if(control instanceof FormGroup) {
         this.validateAllFormFields(control)
       }
-
     })
   }
-
 }

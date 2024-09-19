@@ -9,12 +9,12 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 
 const routes: Routes = [
-  {path: "", component: HomeComponent, pathMatch: 'full'},
-  {path: "table", component: TableComponent, canActivate: [AuthguardGuard]},
-  {path: "fridgeItem", component: CreateComponent},
-  {path: "fridgeItem/:id", component: DetailComponent},
-  {path: "login", component: LoginComponent},
-  {path: "register", component: RegisterComponent}
+  { path: '', component: HomeComponent, pathMatch: 'full', data: { title: 'Home - Food Expiry Tracker' } },
+  { path: 'table', component: TableComponent, canActivate: [AuthguardGuard], data: { title: 'My Fridge - Food Expiry Tracker' } },
+  { path: 'fridgeItem', component: CreateComponent, data: { title: 'Add Item - Food Expiry Tracker' } },
+  { path: 'fridgeItem/:id', component: DetailComponent, data: { title: 'Edit item - Food Expiry Tracker' } },
+  { path: 'login', component: LoginComponent, data: { title: 'Login - Food Expiry Tracker' } },
+  { path: 'register', component: RegisterComponent, data: { title: 'Register - Food Expiry Tracker' } }
 ];
 
 @NgModule({

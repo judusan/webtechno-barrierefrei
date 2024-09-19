@@ -1,0 +1,56 @@
+/* Styles for Create and Detail */
+fieldset.container {
+    text-align: center;
+    max-width: 26em;
+    margin: auto;
+    padding: 1.5em;
+    box-shadow: 1.25em 1.25em 5em rgb(218, 218, 218);
+    border-radius: 1.5em;
+    border: 0.1875em solid #000 !important;
+    margin-top: 10em !important; 
+    background-color: #ffd9d1;
+}
+
+fieldset.container legend {
+    margin-bottom: 1em;
+    color: #000;
+    font-weight: bold;
+}
+
+.form-group {
+    margin-bottom: 1em;
+    position: relative;
+}
+
+input[type='text'] {
+    color: #000;
+    border: 0.2em solid #000;
+}
+
+input[type='date'] {
+    border: 0.2em solid #000;
+    padding: 0.45em;
+    display: flex;
+    cursor: pointer;
+    color: #000;
+}
+
+button.btn {
+    margin-top: 2em !important; 
+    background-color: #000500;
+    margin-right: 1.25em;
+    border-radius: 0.9em;
+}
+
+small.text-danger {
+    text-align: left;
+    display: block;
+    color: #000 !important;
+    margin-top: 0.2em;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    width: 1.5rem;
+    height: 1.5rem;
+    color: #000;
+}

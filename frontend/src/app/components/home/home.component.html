@@ -1,5 +1,10 @@
 <main class="d-flex align-items-center min-vh-100">
-    <div class="container text-center">
-        Welcome back!
-    </div>
-</main>  
+    <section class="container mt-5" id="home-main-content">
+        <h1 class="text-center mb-4">Global Waste Facts</h1>
+        <ul class="facts-list" role="list" aria-labelledby="home-main-content">
+            <li class="fact-box" *ngFor="let fact of facts" role="listitem" tabindex="0">
+                <p>{{ fact.description }}</p>
+            </li>
+        </ul>
+    </section>
+</main>

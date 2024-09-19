@@ -1,16 +1,26 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
-    <div class="container-fluid">
-        <img class="d-inline-block align-top" class="logo" src="../assets/img/logo.PNG" alt="Logo">
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">Menu
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-          <a class="nav-link active" aria-current="page" [routerLink]="'/'">Home</a>
-          <a class="nav-link active" aria-current="page" [routerLink]="'/table'">My Fridge</a>
-          <a class="nav-link" [routerLink]="'/login'" >Login</a>
-          <a class="nav-link" [routerLink]="'/register'" >Sign up</a>
+<header>
+    <nav class="navbar navbar-expand-lg bg-green" role="navigation">
+        <a class="nav-link skip-link" [href]="skipLinkHref" (click)="focusFirstInput($event)" aria-label="Skip to Main Content">Skip to Main Content</a>
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" [routerLink]="'/'">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" [routerLink]="'/table'">My Fridge</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" [routerLink]="'/login'">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" [routerLink]="'/register'">Sign Up</a>
+                    </li>
+                </ul>
+            </div>
         </div>
-      </div>
-    </div>
-  </nav>
-  
+    </nav>
+</header>

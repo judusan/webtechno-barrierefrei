@@ -2,53 +2,67 @@
     <div class="container">
         <div class="row">
             <div class="offset-md-2 col-lg-5 col-md-7 offset-lg-4 offset-md-3">
-                <div class="panel border bg-white">
-                <div class="panel-heading">
-                    <h3 class="pt-3 font-weight-bold">Register</h3>
-                </div>
-                <div class="panel-body p-3">
-                    <form [formGroup]="registerForm">
-                        <div class="form-group pt-3">
-                            <div class="input-field" [class.error]="registerForm.controls['forename'].dirty && registerForm.hasError('required', 'forename')">
-                               <span class="bi bi-person-fill"></span>
-                                <input formControlName="forename" type="text" placeholder="Forename">
+                <main id="register-content">
+                    <div class="panel border bg-white">
+                        <div class="panel-heading">
+                            <h1 class="pt-3 font-weight-bold">Register</h1>
+                    </div>
+                    <div class="panel-body p-3">
+                        <form [formGroup]="registerForm">
+                            <!-- Forename Field -->
+                            <div class="form-group pt-3">
+                                <label for="forename" class="sr-only">Forename</label>
+                                <div class="input-field" [class.error]="registerForm.controls['forename'].dirty && registerForm.hasError('required', 'forename')">
+                                    <span class="bi bi-person-fill"></span>
+                                    <input id="forename" formControlName="forename" type="text" aria-required="true" aria-describedby="forenameError">
+                                </div>
+                                    <small id="forenameError" *ngIf="registerForm.controls['forename'].dirty && registerForm.hasError('required', 'forename')" class="text-danger">*Forename is required</small>
                             </div>
-                        </div>
-                        <small *ngIf="registerForm.controls['forename'].dirty && registerForm.hasError('required', 'forename')" class="text-danger">*Forename is required</small>
-                        <div class="form-group pt-3">
-                            <div class="input-field" [class.error]="registerForm.controls['surname'].dirty && registerForm.hasError('required', 'surname')">
-                               <span class="bi bi-person-fill"></span>
-                                <input formControlName="surname" type="text" placeholder="Surname">
+                            <!-- Surname Field -->
+                            <div class="form-group pt-3">
+                                <label for="surname" class="sr-only">Surname</label>
+                                <div class="input-field" [class.error]="registerForm.controls['surname'].dirty && registerForm.hasError('required', 'surname')">
+                                    <span class="bi bi-person-fill"></span>
+                                    <input id="surname" formControlName="surname" type="text" aria-required="true" aria-describedby="surnameError">
+                                </div>
+                                <small id="surnameError" *ngIf="registerForm.controls['surname'].dirty && registerForm.hasError('required', 'surname')" class="text-danger">*Surname is required</small>
                             </div>
-                        </div>
-                        <small *ngIf="registerForm.controls['surname'].dirty && registerForm.hasError('required', 'surname')" class="text-danger">*Surname is required</small>
-                        <div class="form-group pt-3">
-                            <div class="input-field" [class.error]="registerForm.controls['email'].dirty && registerForm.hasError('required', 'email')">
-                               <span class="bi bi-person-fill"></span>
-                                <input formControlName="email" type="text" placeholder="Email">
+                            <!-- Email Field -->
+                            <div class="form-group pt-3">
+                                <label for="email" class="sr-only">Email</label>
+                                <div class="input-field" [class.error]="registerForm.controls['email'].dirty && registerForm.hasError('required', 'email')">
+                                    <span class="bi bi-envelope-fill"></span>
+                                    <input id="email" formControlName="email" type="text" aria-required="true" aria-describedby="emailError"> 
+                                </div>
+                                <small id="emailError" *ngIf="registerForm.controls['email'].dirty && registerForm.hasError('required', 'email')" class="text-danger">*Email is required</small>
                             </div>
-                        </div>
-                        <small *ngIf="registerForm.controls['email'].dirty && registerForm.hasError('required', 'email')" class="text-danger">*Email is required</small>
-                        <div class="form-group pt-3">
-                            <div class="input-field" [class.error]="registerForm.controls['username'].dirty && registerForm.hasError('required', 'username')">
-                               <span class="bi bi-person-fill"></span>
-                                <input formControlName="username" (change)="checkIfUsernameExists($event.target)" type="text" placeholder="Username">
+                            <!-- Username Field -->
+                            <div class="form-group pt-3">
+                                <label for="username" class="sr-only">Username</label>
+                                <div class="input-field" [class.error]="registerForm.controls['username'].dirty && registerForm.hasError('required', 'username')">
+                                    <span class="bi bi-person-circle"></span>
+                                    <input id="username" formControlName="username" (change)="checkIfUsernameExists($event.target)" type="text" aria-required="true" aria-describedby="usernameError">
+                                </div>
+                                <small id="usernameError" *ngIf="registerForm.controls['username'].dirty && registerForm.hasError('required', 'username')" class="text-danger">*Username is required</small>
                             </div>
-                        </div>
-                        <small *ngIf="registerForm.controls['username'].dirty && registerForm.hasError('required', 'username')" class="text-danger">*Username is required</small>
-                        <div class="form-group pt-3">
-                            <div class="input-field" [class.error]="registerForm.controls['password'].dirty && registerForm.hasError('required', 'password')">
-                                <span class="bi bi-lock-fill"></span>
-                                <input formControlName="password" [type]="type" placeholder="Password">
-                                <span (click)="hideShowPass()" class="bi {{eyeIcon}}"></span>
+                            <!-- Password Field -->
+                            <div class="form-group pt-3">
+                                <label for="password" class="sr-only">Password</label>
+                                <div class="input-field" [class.error]="registerForm.controls['password'].dirty && registerForm.hasError('required', 'password')">
+                                    <span class="bi bi-lock-fill"></span>
+                                    <input id="password" formControlName="password" [type]="type" aria-required="true" aria-describedby="passwordError">
+                                    <span (click)="hideShowPass()" class="bi {{eyeIcon}}" tabindex="0" role="button" aria-label="Toggle password visibility"></span>    
+                                </div>
+                                <small id="passwordError" *ngIf="registerForm.controls['password'].dirty && registerForm.hasError('required', 'password')" class="text-danger">*Password is required</small>
                             </div>
-                        </div>
-                        <small *ngIf="registerForm.controls['password'].dirty && registerForm.hasError('required', 'password')" class="text-danger">*Password is required</small>
-                        <button type="submit" class="btn btn-primary btn-block mt-4 w-100" (click)="onRegister()">Register</button>
-                        <div class="text-center pt-4 text-muted">Already have account? <a id="forget" routerLink="/login">Login</a></div>
-                    </form>
-                </div>
+                            <!-- Buttons -->
+                            <button type="submit" class="btn btn-primary btn-block mt-4 w-100" (click)="onRegister()">Register</button>
+                            <div class="text-center pt-4 text-muted reg-log">Already have an account? <a id="auth-link" routerLink="/login">Login</a></div>
+                        </form>
+                    </div>
+                    </div> 
+                </main>
             </div>
-        </div></div>
+        </div>
     </div>
 </div>

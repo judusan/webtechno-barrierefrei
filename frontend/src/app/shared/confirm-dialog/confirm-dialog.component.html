@@ -1,0 +1,11 @@
+<div role="dialog" aria-labelledby="dialog-title" aria-describedby="dialog-description">
+    <h1 mat-dialog-title id="dialog-title">{{ data.headline }}</h1>
+    <div mat-dialog-content id="dialog-description">
+      <p>{{ data.info }}</p>
+    </div>
+    <div mat-dialog-actions>
+      <button mat-button (click)="onCancel()">Cancel</button>
+      <button mat-button (click)="onConfirm()">OK</button>
+    </div>
+  </div>
+  

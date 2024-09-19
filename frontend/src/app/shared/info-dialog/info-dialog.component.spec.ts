@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ExistDialogComponent } from './exist-dialog.component';
+import { InfoDialogComponent } from './info-dialog.component';
 
-describe('ExistDialogComponent', () => {
-  let component: ExistDialogComponent;
-  let fixture: ComponentFixture<ExistDialogComponent>;
+describe('InfoDialogComponent', () => {
+  let component: InfoDialogComponent;
+  let fixture: ComponentFixture<InfoDialogComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ExistDialogComponent]
+      declarations: [InfoDialogComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(ExistDialogComponent);
+    fixture = TestBed.createComponent(InfoDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
