@@ -9,7 +9,7 @@ import { DialogService } from '../../shared/dialog.service';
 @Component({
   selector: 'app-detail',
   templateUrl: './detail.component.html',
-  styleUrl: '../styles/create-detail-styles.css'
+  styleUrl: '../../shared/styles/create-detail-styles.css'
 })
 
 export class DetailComponent implements OnInit {

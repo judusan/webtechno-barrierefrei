@@ -13,7 +13,7 @@ export interface DialogData {
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css',
-     '../styles/auth-styles.css'
+     '../../shared/styles/auth-styles.css'
   ]
 })
 

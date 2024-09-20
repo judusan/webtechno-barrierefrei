@@ -9,7 +9,7 @@ import { DialogService } from '../../shared/dialog.service';
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css',
-          '../styles/auth-styles.css'
+          '../../shared/styles/auth-styles.css'
   ]
 })
 export class LoginComponent implements OnInit {

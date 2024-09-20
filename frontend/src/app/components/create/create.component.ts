@@ -8,7 +8,7 @@ import { DialogService } from '../../shared/dialog.service';
 @Component({
   selector: 'app-create',
   templateUrl: './create.component.html',
-  styleUrl: '../styles/create-detail-styles.css'
+  styleUrl: '../../shared/styles/create-detail-styles.css'
 })
 
 export class CreateComponent implements OnInit {
