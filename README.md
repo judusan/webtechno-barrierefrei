@@ -2,38 +2,19 @@
 Dokumentation zur Umsetzung der WCAG 2.2 Erfolgskriterien: [Webtech-Dokumentation.pdf](https://github.com/user-attachments/files/17052488/Webtech-Dokumentation.pdf)
 
 ## Installation
-1. **Angular CLI installieren:** Angular CLI wird für die Entwicklung von Angular-Anwendungen benötigt.
+1. **Repository klonen und einrichten:** Klonen Sie das Repository von GitHub, indem Sie den folgenden Befehl ausführen:
     ```
-    npm install -g @angular/cli
-    ```
-
-2. **Node.js installieren:** Laden Sie Node.js von [nodejs.org](https://nodejs.org) herunter und führen Sie die Installation durch.
-
-3. **Repository klonen und einrichten:** Klonen Sie das Repository von GitHub, indem Sie den folgenden Befehl ausführen:
-    ```
-   git clone https://github.com/judusan/webtechno.git
+   git clone https://github.com/judusan/webtechno-barrierefrei.git
      ```
-    Wechseln Sie dann in den Ordner /frontend des geklonten Repositories:
-     ```
-     cd webtechno/frontend
-     ```
-     Installieren Sie die Abhängigkeiten:
+2. **Wechseln Sie in das geklonte Repository und installieren Sie die Abhängigkeiten:**
      ```
      npm install
      ```
-   Starten Sie das Frontend, indem Sie den Befehl ausführen:
+3. **Starten Sie das Frontend, indem Sie den Befehl ausführen:**
      ```
      ng serve
      ```
-    Wechseln Sie dann in den Ordner /backend des geklonten Repositories:
-     ```
-     cd webtechno/backend
-     ```
-     Installieren Sie die Abhängigkeiten:
-     ```
-     npm install
-     ```
-     Starten Sie das Backend, indem Sie den Befehl ausführen:
+4. **Starten Sie das Backend, indem Sie den Befehl ausführen:**
      ```
      npm run watch
      ```
